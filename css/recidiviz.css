@@ -1,0 +1,59 @@
+#sliderDiv  {
+   margin:auto;
+   margin-top:30px;
+   height:15px;
+   width:50%;
+   text-align: center;
+}
+
+svg .first-chart {
+   overflow:none;
+   padding:10px;
+   float:left;
+   width:600px;
+   height:600px;
+}
+
+.iconPlain  {
+   fill:#c5c2c2;
+
+}
+
+.iconSelected  {
+   fill:#c82222;
+}
+
+.bg-our-gray {
+  background-color:#d6d4d3;
+}
+
+.text-our-gray {
+ color: #766e6e;
+}
+
+.text-our-highlight {
+ color: #c82222;
+}
+
+rect    {
+  fill:#ffffff;
+}
+
+.nunito {
+  font-family: 'Nunito', monospace;
+}
+
+.tooltip {
+   position: absolute;
+   z-index: 1020;
+   /*display: block;*/
+   padding: 5px;
+   width: 200px;
+   font-size: 36px;
+/* font-weight: 600;
+color: rgba(0,0,0,.7);*/
+   visibility: visible;
+   margin-top: -2px;
+   bottom:120%;
+   margin-left: -2em;
+}
