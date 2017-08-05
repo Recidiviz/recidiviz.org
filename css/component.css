@@ -9,6 +9,16 @@
 	font-style: normal;
 }
 
+.likelihood-results {
+    width: 100%;
+	margin: 0.3em auto 0 auto
+	line-height: 1.5;
+	font-size: 50px;
+    color: #A01B66;
+    font-weight: 600;
+    text-align: center;
+}
+
 /* general style for the form */
 .nl-form {
 	width: 100%;
@@ -72,7 +82,7 @@
 .nl-field ul {
 	position: absolute;
 	visibility: hidden;
-	background: #76C3BD;
+	background: #CC619E;
 	left: -0.5em;
 	top: 50%;
 	font-size: 80%;
@@ -108,7 +118,7 @@
 }
 
 .nl-dd ul li.nl-dd-checked {
-	color: #478982;
+	color: #820B4E;
 }
 
 .no-touch .nl-dd ul li:hover {
@@ -116,7 +126,7 @@
 }
 
 .no-touch .nl-dd ul li:hover:active {
-	color: #478982;
+	color: #620037;
 }
 
 /* icons for some elements */

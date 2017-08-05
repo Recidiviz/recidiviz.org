@@ -2,277 +2,59 @@
 <html lang="en">
 <head>
     <title>Recidiviz</title>
-    <meta content="Build beautiful, responsive, readable interfaces." name="description">
     <meta charset="utf-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta content="@mrmrs" name="author">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <link href="https://unpkg.com/tachyons/css/tachyons.min.css" rel="stylesheet">
-    <style>
-         .blue { color: #0074D9; }
-         .bg-blue { background-color: #0074D9; }
-    </style>
-    <link href="../favicon.ico" rel="shortcut icon">
-    <!--         <link rel="stylesheet" type="text/css" href="css/default.css" />-->
-    <link href="css/component.css" rel="stylesheet" type="text/css">
-    <script src="js/modernizr.custom.js">
-    </script>
-    <script src="http://d3js.org/d3.v3.min.js">
-    </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
-    </script>
-    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js">
-    </script>
-    <script src="//cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js">
-    </script>
 
-<!--  For title -->    
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Squada+One" rel="stylesheet">
+    <link href="https://unpkg.com/tachyons/css/tachyons.min.css" rel="stylesheet">
+    <link href="../favicon.ico" rel="shortcut icon">
+    <link href="css/component.css" rel="stylesheet" type="text/css">
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+    <script src="js/modernizr.custom.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="//cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Squada+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/demo.css" />
     <link rel="stylesheet" type="text/css" href="css/moveout.css" />
-    <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>   
-    <style type="text/css">
-                  
-               #sliderDiv  {
-                   margin:auto;
-                   margin-top:30px;
-                   height:15px;
-                   width:50%;
-                   text-align: center;
-               }
-               
-               svg .first-chart {
-                   overflow:none;
-                   padding:10px;
-                   float:left;
-                   width:600px;
-                   height:600px;
-               }
-               
-               .iconPlain  {
-                   fill:#c5c2c2; 
-
-               }
-               
-               .iconSelected  {
-                   fill:#c82222;   
-               }
-
-               .bg-our-gray {
-                  background-color:#d6d4d3;
-               }
-
-               .text-our-gray {
-                 color: #766e6e;
-               }
-
-               .text-our-highlight {
-                 color: #c82222;
-               }
-               
-               rect    {
-                  fill:#ffffff;   
-               }
-
-               .nunito {
-                  font-family: 'Nunito', monospace;
-               }
-
-               .tooltip {
-                   position: absolute;
-                   z-index: 1020;
-                   /*display: block;*/
-                   padding: 5px;
-                   width: 200px;
-                   font-size: 36px;
-/*                   font-weight: 600;
-               color: rgba(0,0,0,.7);*/
-                   visibility: visible;
-                   margin-top: -2px;
-                   bottom:120%;
-                   margin-left: -2em;
-               }
-           
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/recidiviz.css" />
 </head>
 
-    <header class="w-100 pa3 ph5-ns bg-white">
-        <div class="db dt-ns mw9 center w-100">
-            <div class="db dtc-ns v-mid tl w-50">
-                <a class="dib f5 f4-ns fw6 mt0 mb1 link black-70" href="/" title="Home">Recidiviz</a>
-            </div>
-            <nav class="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
-                <i class="f6 fw6 link black-70 mr2 mr3-m mr4-l dib">Recidivate: to be released from prison, commit a crime, and be sent back again</i> 
-            </nav>
+<header class="w-100 pa3 ph5-ns bg-white">
+    <div class="db dt-ns mw9 center w-100">
+        <div class="db dtc-ns v-mid tl w-50">
+            <a class="dib f5 f4-ns fw6 mt0 mb1 link black-70" href="/" title="Home">Recidiviz</a>
         </div>
-    </header>
+        <nav class="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
+            <i class="f6 fw6 link black-70 mr2 mr3-m mr4-l dib">Recidivate: to be released from prison, commit a crime, and be sent back again</i>
+        </nav>
+    </div>
+</header>
 
 <body class="demo-moveout">
     <main>
-      <section class="content content--layout">
-        <h2 class="word word--moveout">Recidiviz</h2>
-        <h4 class="f3 content-center: center">press and release the letters to watch them recidivate</h4>
-      </section>
+        <section class="content content--layout">
+            <h2 class="word word--moveout">Recidiviz</h2>
+            <h4 class="f3 content-center: center">press and release the letters to watch them recidivate</h4>
+        </section>
     </main>
     <script src="js/charming.min.js"></script>
     <script src="js/anime.min.js"></script>
     <script src="js/demo.js"></script>
     <script src="js/demo8.js"></script>
-  </body> 
+</body>
+
 <body class="w-100 sans-serif">
     <main class="w-100 bt b--black-10 bg-white">
         <section class="bg-black-0125 w-100">
             <article class="bt b--black-10 black-70 ph3 ph5-ns pv4 pv5-ns" id="getting-started">
                 <div class="mw9 center" id="first-chart">
-                    <h1 class="f5 fw6 f2-ns lh-title measure mt0 pb5 text-our-gray">If 100 people were released from prison today...(drag the slider)</p></h1> 
-                    <script>        
-                       //placeholder div for jquery slider
-                       d3.select("#first-chart")
-                           .append("div")
-                           .attr("id","sliderDiv")
-                           .append("h1")
-                           .attr("class", "f4 fw6 f2-ns lh-title measure mt0 pt4 text-our-gray nunito") //sans-serif
-                           .attr("id","txtValue");
-                       
-                       //create svg element
-                       var svgDoc=d3.select("#first-chart").append("svg").attr("viewBox","0 0 180 70");
-                       
-                        //define an icon store it in svg <defs> elements as a reusable component - this geometry can be generated from Inkscape, Illustrator or similar
-                       svgDoc.append("defs")
-                           .append("g")
-                           .attr("id","iconCustom")
-                           .append("path")
-                                   .attr("d","M3.5,2H2.7C3,1.8,3.3,1.5,3.3,1.1c0-0.6-0.4-1-1-1c-0.6,0-1,0.4-1,1c0,0.4,0.2,0.7,0.6,0.9H1.1C0.7,2,0.4,2.3,0.4,2.6v1.9c0,0.3,0.3,0.6,0.6,0.6h0.2c0,0,0,0.1,0,0.1v1.9c0,0.3,0.2,0.6,0.3,0.6h1.3c0.2,0,0.3-0.3,0.3-0.6V5.3c0,0,0-0.1,0-0.1h0.2c0.3,0,0.6-0.3,0.6-0.6V2.6C4.1,2.3,3.8,2,3.5,2z");
-                       
-                       
-                       //background rectangle
-                       svgDoc.append("rect").attr("width",180).attr("height",70);
-                       
-                       //specify the number of columns and rows for pictogram layout
-                       var numCols = 20;
-                       var numRows = 5;
-                       
-                       //padding for the grid
-                       var xPadding = 10;
-                       var yPadding = 15;
-                       
-                       //horizontal and vertical spacing between the icons
-                       var hBuffer = 8;
-                       var wBuffer = 8;
-                       
-                       //generate a d3 range for the total number of required elements
-                       var myIndex=d3.range(numCols*numRows);
-                       
-                       //text element to display number of icons highlighted
-                       svgDoc.append("text")
-                           .attr("class", "f4 fw6 f1-ns lh-title measure mt0")
-                           .attr("id","txtValue")
-                           .attr("x",xPadding)
-                           .attr("y",yPadding)
-                           .attr("dy",-3);
-            
-                       //create group element and create an svg <use> element for each icon
-                       svgDoc.append("g")
-                           .attr("id","pictoLayer")
-                           .selectAll("use")
-                           .data(myIndex)
-                           .enter()
-                           .append("use")
-                               .attr("xlink:href","#iconCustom")
-                               .attr("id",function(d)    {
-                                   return "icon"+d;
-                               })
-                               .attr("x",function(d) {
-                                   var remainder=d % numCols;//calculates the x position (column number) using modulus
-                                   return xPadding+(remainder*wBuffer);//apply the buffer and return value
-                               })
-                                 .attr("y",function(d) {
-                                   var whole=Math.floor(d/numCols)//calculates the y position (row number)
-                                   return yPadding+(whole*hBuffer);//apply the buffer and return the value
-                               })
-                               .classed("iconPlain",true);
-            
-                       var textValue = 0;
-                       var initialSliderValue = 0;
-
-                       function toYears(monthCount) {
-                           function getPlural(number, word) {
-                               return number === 1 && word.one || word.other;
-                           }
-
-                           var months = { one: 'month', other: 'months' },
-                               years = { one: 'year', other: 'years' },
-                               m = monthCount % 12,
-                               y = Math.floor(monthCount / 12),
-                               result = [];
-
-                           y && result.push('in ' + y + ' ' + getPlural(y, years));
-                           m && result.push('in ' + m + ' ' + getPlural(m, months));
-                           return result.join(', ');
-                       }
-
-                       //create a jquery slider to control the pictogram 
-                       // 28.2% 43.4% 59.5% 67.8% 73.0% 76.6%        
-                        $( "#sliderDiv" ).slider({
-                               orientation: "horizontal",
-                               min: 0,
-                               max: numCols*numRows,
-                               value: 0,
-                               slide: function( event, ui ) {
-                               var currentSliderValue = ui.value || initialSliderValue;
-                               currentSliderValue = (currentSliderValue / (100/60)).toFixed();
-                               var tooltip = '<div class="tooltip nunito fw6 text-our-gray" style="width:500px;"><div class="tooltip-inner">' + toYears(currentSliderValue) + '<\/div><div class="tooltip-arrow"><\/div><\/div>';
-                               $('.ui-slider-handle').css("outline", "none").html(tooltip);
-
-                               d3.selectAll("use").attr("class",function(d,i){
-                                   var rangeMinimum, rangeLength, previousPeople, peopleDelta;
-                        
-                                   if (ui.value <= 10){                    // 6 months, 28.2%
-                                       rangeMinimum = 0;
-                                       rangeLength = 10;
-                                       previousPeople = 0;
-                                       peopleDelta = 28.2;
-                                   } else if (ui.value <= 20){             // 1 year, 43.4%
-                                       rangeMinimum = 10;
-                                       rangeLength = 10;
-                                       previousPeople = 28.2;
-                                       peopleDelta = 15.2;
-                                   } else if (ui.value <= 40) {             // 2 years, 60%
-                                       rangeMinimum = 20;
-                                       rangeLength = 20;
-                                       previousPeople = 43.4;
-                                       peopleDelta = 16.6;
-                                   } else if (ui.value <= 60) {            // 3 years, 68%
-                                       rangeMinimum = 40;
-                                       rangeLength = 20;
-                                       previousPeople = 60;
-                                       peopleDelta = 8;
-                                   } else if (ui.value <= 80) {     // 4 years, 73%
-                                       rangeMinimum = 60;
-                                       rangeLength = 20;
-                                       previousPeople = 68;
-                                       peopleDelta = 5;
-                                   } else if (ui.value <= 100) {    // 5 years, 77%
-                                       rangeMinimum = 80;
-                                       rangeLength = 20;
-                                       previousPeople = 73;
-                                       peopleDelta = 4;
-                                   }
-
-                                   var threshold = ((ui.value - rangeMinimum) / (rangeLength / peopleDelta)) + previousPeople;
-                                   textValue = threshold.toFixed();
-                                   if (d < threshold) {
-                                       return "iconSelected";
-                                   } else {
-                                       return "iconPlain";
-                                   }
-                               });
-                               d3.select("#txtValue").text("..." + textValue + " would be back in prison");
-                             }
-                       });         
-                    </script>
+                    <h1 class="f5 fw6 f2-ns lh-title measure mt0 pb5 text-our-gray">If 100 people were released from prison today...(drag the slider)</h1>
+                    <script src="./js/recidivismSlider.js"></script>
                 </div>
             </article>
             <section class="cf ph3 ph5-ns pb5 bg-our-gray black-70">
@@ -280,131 +62,169 @@
                     <article class="pv2 fl w-100">
                         <h1 class="f4 fw6 f1-ns lh-title measure mt0 text-our-gray">Try Your Luck</h1>
 
-                        <p class="f5 f4-ns measure lh-copy mt0 text-our-gray">A prisoner's age, race, gender, and crime tell us something about how likely they are to end up back in prison -- and how quickly.</p>
+                        <p class="f5 f4-ns measure lh-copy mt0 text-our-gray">
+                            A prisoner's age, race, gender, and crime tell us something about how likely they
+                            are to end up back in prison -- and how quickly.
+                        </p>
 
                         <div>
-                        <form class="nl-form text-our-gray" id="nl-form" name="nl-form">
-                        I am <select style="outline:none;">
-                            <option selected value="1">
-                                less than 24
-                            </option>
-                            <option value="2">
-                                25 - 29
-                            </option>
-                            <option value="3">
-                                30 - 34
-                            </option>
-                            <option value="4">
-                                35 - 39
-                            </option>
-                            <option value="2">
-                                40+
-                            </option>
-                        </select> years old. I am a <select style="outline:none;">
-                            <option selected value="1">
-                                latino(a)
-                            </option>
-                            <option value="2">
-                                white
-                            </option>
-                            <option value="3">
-                                black
-                            </option>
-                            <option value="4">
-                                other
-                            </option>
-                        </select> <select style="outline:none;">
-                            <option selected value="1">
-                                woman
-                            </option>
-                            <option value="2">
-                                man
-                            </option>
-                            <option value="3">
-                                other
-                            </option>
-                        </select> who has previously been arrested <select style="outline:none;">
-                            <option selected value="1">
-                                between 5 and 9
-                            </option>
-                            <option value="2">
-                                less than 4
-                            </option>
-                            <option value="3">
-                                10 or more
-                            </option>
-                        </select> times. If I am released from prison after serving time for <select style="outline:none;">
-                            <option selected value="1">
-                                drug trafficking
-                            </option>
-                            <option value="1">
-                                assault
-                            </option>
-                            <option value="2">
-                                larceny or theft
-                            </option>
-                            <option value="3">
-                                homicide
-                            </option>
-                            <option value="4">
-                                weapons
-                            </option>
-                            <option value="5">
-                                sexual assault
-                            </option>
-                            <option value="6">
-                                violent crime
-                            </option>
-                        </select>, I will probably be back in prison in...
-                    </form>
-                        </div>
+                            <form class="nl-form text-our-gray" id="nl-form-likelihood" name="nl-form">
+                            I am <select name="age" style="outline:none;">
+                                <option selected value="24 or younger">
+                                    less than 24
+                                </option>
+                                <option value="25 to 29">
+                                    25 - 29
+                                </option>
+                                <option value="30 to 34">
+                                    30 - 34
+                                </option>
+                                <option value="35 to 39">
+                                    35 - 39
+                                </option>
+                                <option value="40 or older">
+                                    40+
+                                </option>
+                            </select> years old. I am a <select name="race" style="outline:none;">
+                                <option selected value="Hispanic/Latino">
+                                    latino(a)
+                                </option>
+                                <option value="White">
+                                    white
+                                </option>
+                                <option value="Black/African American">
+                                    black
+                                </option>
+                                <option value="Other">
+                                    other
+                                </option>
+                            </select> <select name="sex" style="outline:none;">
+                                <option selected value="Female">
+                                    woman
+                                </option>
+                                <option value="Male">
+                                    man
+                                </option>
+                                <option value="Missing">
+                                    other
+                                </option>
+                            </select> who has previously been arrested <select name="history" style="outline:none;">
+                                <option selected value="4 or fewer">
+                                    less than 4
+                                </option>
+                                <option value="5 to 9">
+                                    between 5 and 9
+                                </option>
+                                <option value="10 or more">
+                                    10 or more
+                                </option>
+                            </select> times. If I am released from prison after serving time for <select name="offense" style="outline:none;">
+                                <option selected value="Homicide">
+                                    homicide
+                                </option>
+                                <option value="Rape/Sexual Assault">
+                                    sexual assault
+                                </option>
+                                <option value="Robbery">
+                                    robbery
+                                </option>
+                                <option value="Assault">
+                                    assault
+                                </option>
+                                <option value="Other Violent Crime">
+                                    violent crime
+                                </option>
+                                <option value="Drug Trafficking">
+                                    drug trafficking
+                                </option>
+                                <option value="Burglary">
+                                    burglary
+                                </option>
+                                <option value="Fraud/Forgery">
+                                    fraud or forgery
+                                </option>
+                                <option value="Larceny and Motor Vehicle Theft">
+                                    larceny or theft
+                                </option>
+                                <option value="Other Property">
+                                    property crime
+                                </option>
+                                <option value="Drug Possession">
+                                    drug possession
+                                </option>
+                                <option value="Other Public-Order">
+                                    other drug crime
+                                </option>
+                                <option value="Weapons">
+                                    weapons
+                                </option>
+                                <option value="DUI">
+                                    DUI
+                                </option>
+                                <option value="Other Public-Order">
+                                    public order crime
+                                </option>
+                            </select>, I will probably be back in prison in...
+                            <div class="nl-overlay"></div>
+                        </form>
+                        <div id="nl-form-likelihood-results" class="likelihood-results pt4">more than 5 years</div>
+                    </div>
                     </article>
                 </div>
             </section>
             <section class="cf ph3 ph5-ns pb5 bg-white black-70">
                 <div class="mw9 center pa3 pa5-ns">
                     <article class="pv2 fl w-100">
-                      <div class="fl w-60 pa2">
-                                              <h1 class="f4 fw6 f1-ns lh-title measure mt0 text-our-gray">Compare Prisons</h1>
+                        <div class="fl w-60 pa2">
+                            <h1 class="f4 fw6 f1-ns lh-title measure mt0 text-our-gray">Compare Prisons</h1>
 
-                        <p class="f5 f4-ns measure lh-copy mt0 text-our-gray">The American criminal justice system holds more than 2.3 million people in 1,719 state prisons, 102 federal prisons, 942 juvenile correctional facilities, and 3,283 local jails.</p>
+                            <p class="f5 f4-ns measure lh-copy mt0 text-our-gray">
+                                The American criminal justice system holds more than 2.3 million people in 1,719 state
+                                prisons, 102 federal prisons, 942 juvenile correctional facilities, and 3,283 local
+                                jails.
+                            </p>
 
-                        <img src="prisons.png">
-                      </div>
+                            <img src="prisons.png">
+                        </div>
                       
-                      <div class="fl w-40">
-                        <form class="nl-form text-our-gray" id="nl-form" name="nl-form">
-                        Show me the prisons in 
-                        <select style="outline:none;">
-                            <option selected value="1">
-                                Washington
-                            </option>
-                            <option value="1">
-                                Alaska
-                            </option>
-                            <option value="2">
-                                Arizona
-                            </option>
-                            <option value="3">
-                                Arkansas
-                            </option>
-                            <option value="4">
-                                Utah
-                            </option>
-                            <option value="5">
-                                California
-                            </option>
-                            <option value="6">
-                                Georgia
-                            </option>
-                        </select>
-                        ranked by their recidivism rates
-                        </form>
-                      </div>
+                        <div class="fl w-40">
+                            <form class="nl-form text-our-gray" id="nl-form-state" name="nl-form">
+                            Show me the prisons in
+                            <select style="outline:none;">
+                                <option selected value="1">
+                                    Washington
+                                </option>
+                                <option value="1">
+                                    Alaska
+                                </option>
+                                <option value="2">
+                                    Arizona
+                                </option>
+                                <option value="3">
+                                    Arkansas
+                                </option>
+                                <option value="4">
+                                    Utah
+                                </option>
+                                <option value="5">
+                                    California
+                                </option>
+                                <option value="6">
+                                    Georgia
+                                </option>
+                            </select>
+                            ranked by their recidivism rates
+                            </form>
+                        </div>
                     </article>
                 </div>
             </section>
         </section>
     </main>
+
+    <script src="./js/nlform.js"></script>
+    <script>
+        var nlform = new NLForm(document.getElementById('nl-form-likelihood'));
+    </script>
 </body>
 </html>
