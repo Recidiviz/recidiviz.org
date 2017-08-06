@@ -137,7 +137,7 @@ body {
 
 a {
 	text-decoration: none;
-	color: var(--color-link);
+	color: rgb(85, 26, 139);
 	outline: none;
 }
 
