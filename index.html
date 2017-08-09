@@ -9,6 +9,7 @@
     <link href="https://unpkg.com/tachyons/css/tachyons.min.css" rel="stylesheet">
     <link href="../favicon.ico" rel="shortcut icon">
     <link href="css/component.css" rel="stylesheet" type="text/css">
+    <link href="css/columns.css" rel="stylesheet" type="text/css">
     <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
     <script src="js/modernizr.custom.js"></script>
@@ -16,6 +17,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="//cdn.jsdelivr.net/jquery.ui.touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/jquery.columns.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+    <script src="js/stateRecidivismRandom.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,700|Squada+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
@@ -77,7 +81,7 @@
                         </p>
 
                         <div>
-                            <form class="nl-form text-our-gray" id="nl-form-likelihood" name="nl-form">
+                            <form class="nl-form text-our-gray" id="nl-form-likelihood">
                             I am <select name="age" style="outline:none;">
                                 <option selected value="24 or younger">
                                     less than 24
@@ -176,7 +180,7 @@
                             </select>, I will probably be back in prison in...
                             <div class="nl-overlay"></div>
                         </form>
-                        <div id="nl-form-likelihood-results" class="likelihood-results pt4">more than 5 years</div>
+                        <div id="nl-form-likelihood-results" class="likelihood-results pt4"></div>
                     </div>
                     </article>
                 </div>
@@ -202,33 +206,36 @@
                         </div>
                       
                         <div class="fl w-40">
-                            <form class="nl-form text-our-gray" id="nl-form-state" name="nl-form">
+                            <form class="nl-form text-our-gray" id="nl-form-state">
                             Show me the prisons in
-                            <select style="outline:none;">
-                                <option selected value="1">
-                                    Washington
-                                </option>
-                                <option value="1">
+                            <select id="state-prisons-selector" style="outline:none;">
+                                <option selected value="Alaska">
                                     Alaska
                                 </option>
-                                <option value="2">
+                                <option value="Arizona">
                                     Arizona
                                 </option>
-                                <option value="3">
+                                <option value="Arkansas">
                                     Arkansas
                                 </option>
-                                <option value="4">
-                                    Utah
-                                </option>
-                                <option value="5">
+                                <option value="California">
                                     California
                                 </option>
-                                <option value="6">
+                                <option value="Georgia">
                                     Georgia
                                 </option>
+                                <option value="Utah">
+                                    Utah
+                                </option>
+                                <option value="Washington">
+                                    Washington
+                                </option>
                             </select>
+                            <div class="nl-overlay"></div>
                             ranked by their recidivism rates
                             </form>
+
+                            <div id="state-prisons-table" class="pt4"></div>
                         </div>
                     </article>
                 </div>
@@ -243,9 +250,14 @@
     </p>
 </footer>
 
+    <script src="./js/likelihoodSelect.js"></script>
+    <script src="./js/stateRecidivismRandom.js"></script>
     <script src="./js/nlform.js"></script>
     <script>
-        var nlform = new NLForm(document.getElementById('nl-form-likelihood'));
+        var nlformLikelihood = new NLForm(document.getElementById('nl-form-likelihood'), likelihoodSelect);
+        var nlformState = new NLForm(document.getElementById('nl-form-state'), stateSelect);
+        likelihoodSelect(nlformLikelihood);
+        stateSelect(nlformState);
     </script>
 </body>
 </html>
