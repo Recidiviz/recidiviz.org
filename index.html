@@ -54,23 +54,82 @@
 
 <body class="w-100 sans-serif">
     <main class="w-100 bt b--black-10 bg-white">
-        <section class="bg-black-0125 w-100">
+        <section class="bg-white w-100">
             <article class="bt b--black-10 black-70 ph3 ph5-ns pv4 pv5-ns">
-                <div class="mw9 center" id="first-chart">
-                    <h1 class="f5 fw6 f2-ns lh-title measure mt0 pb5 text-our-gray">If 100 people were released from prison today...(drag the slider)</h1>
-
-                    <script src="./js/recidivismSlider.js"></script>
-
-                    <p class="f5 f4-ns lh-copy mt0 text-our-gray">
-                        Data from the <a href="https://www.bjs.gov/index.cfm?ty=pbdetail&iid=4986">United States Bureau
-                        of Justice Statistics</a>, which determined recidivism rates among inmates released from prisons
-                        in 30 states in 2005, over the ensuing 5 year span. Here, a recidivist is a person who has been
-                        arrested for a new crime after returning to their community either on probation or after a term
-                        of incarceration.
-                    </p>
+                <div class="mw9 center">
+                    <div class="cf ph2-ns">
+                        <div class="fl w-third pa2">
+                            <p class="f5 f4-ns lh-copy mt0 text-our-gray">
+                                The American criminal justice system holds more than 2.3 million people in 1,719 state
+                                prisons, 102 federal prisons, 942 juvenile correctional facilities, and 3,283 local
+                                jails.
+                            </p>
+                            <p class="f5 f4-ns lh-copy mt0 text-our-gray">
+                                95 percent of American prisoners will one day be released from correctional custody.
+                            </p>
+                        </div>
+                        <div class="fl w-third pa2">
+                            <p class="f5 f4-ns lh-copy mt0 text-our-gray">
+                                Depending on who you ask, between 40% and 70% of those prisoners will end up back in
+                                prison within three years.
+                            </p>
+                        </div>
+                        <div class="fl w-third pa2">
+                            <p class="f5 f4-ns lh-copy mt0 text-our-gray">
+                                This prototype illustrates how visualizing recidivism rates — over time, across
+                                demographics, and between prisons — would allow decision-makers to take a data-driven
+                                approach to reducing recidivism (thereby reducing crime and government spending) and
+                                improving prisoner outcomes.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </article>
-            <section class="cf ph3 ph5-ns pb5 bg-our-gray black-70">
+        </section>
+
+        <section class="bg-black-0125 w-100">
+            <article class="bt b--black-10 black-70 bg-our-gray ph3 ph5-ns pv4 pv5-ns">
+                <p class="f5 lh-copy mt0 text-our-gray">
+                    The chart below provides an introduction to the recidivism problem, with data from the
+                    <a href="https://www.bjs.gov/index.cfm?ty=pbdetail&iid=4986">United States Bureau of Justice
+                    Statistics</a>, which determined recidivism rates among inmates released from prisons across 30
+                    states over 5 years, starting in 2005. Ideally, we’d be able to do this calculation in
+                    real-time, in order to track progress: for example, how do recidivism rates compare to what
+                    they were, say, a decade ago? We don’t know.
+                </p>
+                <p class="f5 lh-copy mt0 text-our-gray">
+                    Here, a recidivist is someone who has been arrested for a new crime after returning to their
+                    community. But different states, counties, and academics tend to measure recidivism differently,
+                    which makes it difficult to compare how programs are performing, what’s working, and what isn’t.
+                </p>
+            </article>
+
+            <article class="bt b--black-10 black-70 ph3 ph5-ns pt2 pt3-ns">
+                <div class="mw9 center pa3 pa5-ns" id="first-chart">
+                    <h1 class="f5 fw6 f2-ns lh-title measure mt0 pb5 text-our-gray">
+                        If 100 people were released from prison today...(drag the slider)
+                    </h1>
+
+                    <script src="./js/recidivismSlider.js"></script>
+                </div>
+            </article>
+        </section>
+
+        <section class="bg-black-0125 w-100">
+            <article class="bt b--black-10 black-70 bg-our-gray ph3 ph5-ns pv4 pv5-ns">
+                <p class="f5 lh-copy mt0 text-our-gray">
+                    The next chart uses the same dataset, but this time dives a bit deeper, exploring
+                    how a prisoner's age, race, gender, and crime impact their likelihood of winding up back in
+                    prison. Try entering your own age, race, and gender.
+                </p>
+                <p class="f5 lh-copy mt0 text-our-gray">
+                    Collecting this data on an ongoing basis (rather than taking a snapshot from 2005) would
+                    allow us to design more effective programs for reducing recidivism and track their
+                    effectiveness over time.
+                </p>
+            </article>
+
+            <article class="cf ph3 ph5-ns pb5 bg-white black-70">
                 <div class="mw9 center pa3 pa5-ns">
                     <article class="pv2 fl w-100">
                         <h1 class="f4 fw6 f1-ns lh-title measure mt0 text-our-gray">Try Your Luck</h1>
@@ -80,175 +139,176 @@
                             are to end up back in prison -- and how quickly.
                         </p>
 
-                        <div>
+                        <div class="pb3">
                             <form class="nl-form text-our-gray" id="nl-form-likelihood">
-                            I am <select name="age" style="outline:none;">
-                                <option selected value="24 or younger">
-                                    less than 24
-                                </option>
-                                <option value="25 to 29">
-                                    25 - 29
-                                </option>
-                                <option value="30 to 34">
-                                    30 - 34
-                                </option>
-                                <option value="35 to 39">
-                                    35 - 39
-                                </option>
-                                <option value="40 or older">
-                                    40+
-                                </option>
-                            </select> years old. I am a <select name="race" style="outline:none;">
-                                <option selected value="Hispanic/Latino">
-                                    latino(a)
-                                </option>
-                                <option value="White">
-                                    white
-                                </option>
-                                <option value="Black/African American">
-                                    black
-                                </option>
-                                <option value="Other">
-                                    other
-                                </option>
-                            </select> <select name="sex" style="outline:none;">
-                                <option selected value="Female">
-                                    woman
-                                </option>
-                                <option value="Male">
-                                    man
-                                </option>
-                                <option value="Missing">
-                                    other
-                                </option>
-                            </select> who has previously been arrested <select name="history" style="outline:none;">
-                                <option selected value="4 or fewer">
-                                    less than 4
-                                </option>
-                                <option value="5 to 9">
-                                    between 5 and 9
-                                </option>
-                                <option value="10 or more">
-                                    10 or more
-                                </option>
-                            </select> times. If I am released from prison after serving time for <select name="offense" style="outline:none;">
-                                <option selected value="Homicide">
-                                    homicide
-                                </option>
-                                <option value="Rape/Sexual Assault">
-                                    sexual assault
-                                </option>
-                                <option value="Robbery">
-                                    robbery
-                                </option>
-                                <option value="Assault">
-                                    assault
-                                </option>
-                                <option value="Other Violent Crime">
-                                    violent crime
-                                </option>
-                                <option value="Drug Trafficking">
-                                    drug trafficking
-                                </option>
-                                <option value="Burglary">
-                                    burglary
-                                </option>
-                                <option value="Fraud/Forgery">
-                                    fraud or forgery
-                                </option>
-                                <option value="Larceny and Motor Vehicle Theft">
-                                    larceny or theft
-                                </option>
-                                <option value="Other Property">
-                                    property crime
-                                </option>
-                                <option value="Drug Possession">
-                                    drug possession
-                                </option>
-                                <option value="Other Public-Order">
-                                    other drug crime
-                                </option>
-                                <option value="Weapons">
-                                    weapons
-                                </option>
-                                <option value="DUI">
-                                    DUI
-                                </option>
-                                <option value="Other Public-Order">
-                                    public order crime
-                                </option>
-                            </select>, I will probably be back in prison in...
-                            <div class="nl-overlay"></div>
-                        </form>
-                        <div id="nl-form-likelihood-results" class="likelihood-results pt4"></div>
-                    </div>
+                                I am <select name="age" style="outline:none;">
+                                    <option selected value="24 or younger">
+                                        less than 24
+                                    </option>
+                                    <option value="25 to 29">
+                                        25 - 29
+                                    </option>
+                                    <option value="30 to 34">
+                                        30 - 34
+                                    </option>
+                                    <option value="35 to 39">
+                                        35 - 39
+                                    </option>
+                                    <option value="40 or older">
+                                        40+
+                                    </option>
+                                </select> years old. I am a <select name="race" style="outline:none;">
+                                    <option selected value="Hispanic/Latino">
+                                        latino(a)
+                                    </option>
+                                    <option value="White">
+                                        white
+                                    </option>
+                                    <option value="Black/African American">
+                                        black
+                                    </option>
+                                    <option value="Other">
+                                        other
+                                    </option>
+                                </select> <select name="sex" style="outline:none;">
+                                    <option selected value="Female">
+                                        woman
+                                    </option>
+                                    <option value="Male">
+                                        man
+                                    </option>
+                                    <option value="Missing">
+                                        other
+                                    </option>
+                                </select> who has previously been arrested <select name="history" style="outline:none;">
+                                    <option selected value="4 or fewer">
+                                        less than 4
+                                    </option>
+                                    <option value="5 to 9">
+                                        between 5 and 9
+                                    </option>
+                                    <option value="10 or more">
+                                        10 or more
+                                    </option>
+                                </select> times. If I am released from prison after serving time for <select name="offense" style="outline:none;">
+                                    <option selected value="Homicide">
+                                        homicide
+                                    </option>
+                                    <option value="Rape/Sexual Assault">
+                                        sexual assault
+                                    </option>
+                                    <option value="Robbery">
+                                        robbery
+                                    </option>
+                                    <option value="Assault">
+                                        assault
+                                    </option>
+                                    <option value="Other Violent Crime">
+                                        violent crime
+                                    </option>
+                                    <option value="Drug Trafficking">
+                                        drug trafficking
+                                    </option>
+                                    <option value="Burglary">
+                                        burglary
+                                    </option>
+                                    <option value="Fraud/Forgery">
+                                        fraud or forgery
+                                    </option>
+                                    <option value="Larceny and Motor Vehicle Theft">
+                                        larceny or theft
+                                    </option>
+                                    <option value="Other Property">
+                                        property crime
+                                    </option>
+                                    <option value="Drug Possession">
+                                        drug possession
+                                    </option>
+                                    <option value="Other Public-Order">
+                                        other drug crime
+                                    </option>
+                                    <option value="Weapons">
+                                        weapons
+                                    </option>
+                                    <option value="DUI">
+                                        DUI
+                                    </option>
+                                    <option value="Other Public-Order">
+                                        public order crime
+                                    </option>
+                                </select>, I will probably be back in prison in...
+                                <div class="nl-overlay"></div>
+                            </form>
+                            <div id="nl-form-likelihood-results" class="likelihood-results pt4"></div>
+                        </div>
                     </article>
                 </div>
-            </section>
-            <section class="cf ph3 ph5-ns pb5 bg-white black-70">
+            </article>
+        </section>
+
+        <section class="bg-black-0125 w-100">
+            <article class="bt b--black-10 black-70 bg-our-gray ph3 ph5-ns pv4 pv5-ns">
+                <p class="f5 lh-copy mt0 text-our-gray">
+                    The third chart is based on fake data because, as far as we know, this dataset
+                    doesn't exist. If we could compare prisons by recidivism rates — rather than by price
+                    per prisoner, for example — we could get a much clearer picture of what programs were
+                    working, share best practices, and reduce recidivism rates across the board.
+                </p>
+                <p class="f5 lh-copy mt0 text-our-gray">
+                    Today, it’s virtually impossible to do this kind of comparison. Prisons themselves
+                    often don’t even know their recidivism rates, how they’re changing over time, how their
+                    programs are working for some inmates versus others, or how they might improve their
+                    programs to deliver better outcomes for all.
+                </p>
+            </article>
+
+            <article class="cf ph3 ph5-ns pb5 bg-white black-70">
                 <div class="mw9 center pa3 pa5-ns">
                     <article class="pv2 fl w-100">
-                        <div class="fl w-60 pa2">
-                            <h1 class="f4 fw6 f1-ns lh-title measure mt0 text-our-gray">Compare Prisons</h1>
+                        <h1 class="f4 fw6 f1-ns lh-title measure mt0 text-our-gray">Compare Prisons</h1>
 
-                            <p class="f5 f4-ns measure lh-copy mt0 text-our-gray">
-                                The American criminal justice system holds more than 2.3 million people in 1,719 state
-                                prisons, 102 federal prisons, 942 juvenile correctional facilities, and 3,283 local
-                                jails.
-                            </p>
+                        <form class="nl-form text-our-gray" id="nl-form-state">
+                        Show me the prisons in
+                        <select id="state-prisons-selector" style="outline:none;">
+                            <option selected value="Alaska">
+                                Alaska
+                            </option>
+                            <option value="Arizona">
+                                Arizona
+                            </option>
+                            <option value="Arkansas">
+                                Arkansas
+                            </option>
+                            <option value="California">
+                                California
+                            </option>
+                            <option value="Georgia">
+                                Georgia
+                            </option>
+                            <option value="Utah">
+                                Utah
+                            </option>
+                            <option value="Washington">
+                                Washington
+                            </option>
+                        </select>
+                        <div class="nl-overlay"></div>
+                        ranked by their recidivism rates
+                        </form>
 
-                            <p class="f5 f4-ns measure lh-copy mt0 text-our-gray">
-                                Research by the Washington Post below shows the raw number of prisoners in each U.S. 
-                                county as of the 2010 Census. Counties with 1000+ incarcerated persons are colored purple.
-                            </p>
-
-                            <img src="prisons.png">
-                        </div>
-                      
-                        <div class="fl w-40">
-                            <form class="nl-form text-our-gray" id="nl-form-state">
-                            Show me the prisons in
-                            <select id="state-prisons-selector" style="outline:none;">
-                                <option selected value="Alaska">
-                                    Alaska
-                                </option>
-                                <option value="Arizona">
-                                    Arizona
-                                </option>
-                                <option value="Arkansas">
-                                    Arkansas
-                                </option>
-                                <option value="California">
-                                    California
-                                </option>
-                                <option value="Georgia">
-                                    Georgia
-                                </option>
-                                <option value="Utah">
-                                    Utah
-                                </option>
-                                <option value="Washington">
-                                    Washington
-                                </option>
-                            </select>
-                            <div class="nl-overlay"></div>
-                            ranked by their recidivism rates
-                            </form>
-
-                            <div id="state-prisons-table" class="pt4"></div>
-                        </div>
+                        <div id="state-prisons-table" class="pt4"></div>
                     </article>
                 </div>
-            </section>
+            </article>
         </section>
     </main>
 
-<footer class="bg-white ph4 pv4 bt b--black-10">
-    <p class="f6 f5-ns lh-copy text-our-gray">
-        For feedback or questions, reach out to us at
-        <a href="mailto:info@recidiviz.com?Subject=Recidiviz%20Feedback">info@recidiviz.com</a>
-    </p>
-</footer>
+    <footer class="bg-white ph4 pv4 bt b--black-10">
+        <p class="f6 f5-ns lh-copy text-our-gray">
+            For feedback or questions, reach out to us at
+            <a href="mailto:info@recidiviz.com?Subject=Recidiviz%20Feedback">info@recidiviz.com</a>
+        </p>
+    </footer>
 
     <script src="./js/likelihoodSelect.js"></script>
     <script src="./js/stateRecidivismRandom.js"></script>
