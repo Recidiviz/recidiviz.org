@@ -36,6 +36,7 @@ svgDoc.append("defs")
     .append("path")
     .attr("d","M3.5,2H2.7C3,1.8,3.3,1.5,3.3,1.1c0-0.6-0.4-1-1-1c-0.6,0-1,0.4-1,1c0,0.4,0.2,0.7,0.6,0.9H1.1C0.7,2,0.4,2.3,0.4,2.6v1.9c0,0.3,0.3,0.6,0.6,0.6h0.2c0,0,0,0.1,0,0.1v1.9c0,0.3,0.2,0.6,0.3,0.6h1.3c0.2,0,0.3-0.3,0.3-0.6V5.3c0,0,0-0.1,0-0.1h0.2c0.3,0,0.6-0.3,0.6-0.6V2.6C4.1,2.3,3.8,2,3.5,2z");
 
+
 //background rectangle
 svgDoc.append("rect").attr("width",180).attr("height",70);
 
@@ -116,9 +117,15 @@ $( "#sliderDiv" ).slider({
     slide: function( event, ui ) {
         var currentSliderValue = ui.value || initialSliderValue;
         currentSliderValue = (currentSliderValue / (100/60)).toFixed();
-        var tooltip = '<div class="tooltip nunito fw6 text-our-gray" style="width:500px;"><div class="tooltip-inner">' + toYears(currentSliderValue) + '<\/div><div class="tooltip-arrow"><\/div><\/div>';
-        $('.ui-slider-handle').css("outline", "none").html(tooltip);
-
+        var sliderLabelText = toYears(currentSliderValue);
+        
+        // if the slider has a value, display it, otherwise display "(drag the slider)"
+        if (sliderLabelText) {
+             d3.select('#sliderLabel').text(sliderLabelText);
+        } else {
+            d3.select('#sliderLabel').text("(drag the slider)");
+        }
+        
         d3.selectAll("use").attr("class",function (d,i) {
             var rangeMinimum, rangeLength, previousPeople, peopleDelta;
 
