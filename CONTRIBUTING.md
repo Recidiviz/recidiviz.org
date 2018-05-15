@@ -90,7 +90,7 @@ where you feel less comfortable or need to learn something new.
 
 **tl;dr:**
 1. Work on a feature branch
-1. Run linting and tests often
+1. [Run linting and tests often](README.md#linting--running-tests)
 1. Ensure your change has test coverage (_ideally complete coverage_)
 1. Submit a descriptive pull request
 
@@ -101,7 +101,7 @@ are part of the Recidiviz Team, you may push branches directly to the
 of the repository.
 
 Before issuing a pull request, run our linting and test suite over your changes
-to ensure no regression, as described in [our Readme](README.md).
+to ensure no regression, as described in [our Readme](README.md#linting--running-tests).
 
 These same commands will be run by our continuous integration (CI) suite and
 your pull request will be "built against" automatically to show whether it
@@ -143,8 +143,12 @@ your pull request (and delete the branch if issued against our remote).
 
 ## Style
 
-Follow the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript).
+Follow the Airbnb Style Guides for [Javascript](https://github.com/airbnb/javascript)
+and [React](https://github.com/airbnb/javascript/tree/master/react).
 
 The linting configuration should adhere to this style guide and help you follow
 it automatically. You can use support for warning suppression if you find it
 necessary, but this may be argued against during code review.
+
+You should also ensure you follow the outlined [application structure](README.md#application-structure),
+though exceptions may be made here as well, as long as they are made explicit.
