@@ -1,19 +1,16 @@
 language: node_js
 node_js:
-  - "lts/*"
+- lts/*
 install:
-  - yarn install
+- yarn install
 script:
-  - yarn test
+- yarn test
 after_success:
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
-  # TODO: Create build and deploy to GAE as part of resolving issue #23
-  # - yarn build
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 cache:
   yarn: true
   directories:
-    - "node_modules"
-    # TEST
+  - node_modules
 notifications:
   slack:
-    secure: RRx5Klgwfr2ggUxugs2nBOt2atYoKDrv+RfVY2OeINsZqPeZoxpfKntpIctfdUfPIZofyNUfPFfIFjZdNWBwXHKTu1/3KkCslBDUoPW9En1np5RTrVUmZJJy7no+J19PuDUDQYcDRCcEw41PbjcE7NPfK12bTI7jCGKw3ZTX1tLWlXDz70BOIsJxW3gLrgopFo0mNGWKbIVBU4VeUxhOpxB3RzegtCNrTIcfiEpnuNcyNvzhTpzlQdinW4rXQjv5p7oxCEkMGTfywtVrUVLfrSMCCVde1rv2RUBJPmShmFbJjfWuozMMlVK82vXMjj+z3HrIYPAYMmbVM9zqn/SDjdwzfzbmldol8yKcW4DTmlH4phfw9qWGa/UdpcHPT5vUoNzg3QVvVTYwV8sG8O6XeO341BSelSdfmbFq6YJvgfgHgDXbjbP8ME2DqUP/0RE21FEXReaV8Ln3FvneMFK1MnKV3czKOOwh6m48M7zFcdQr1OFto2+aIdF8IS7nke3btzUW1HL7ppn+wlLdOGsYuTPsMUQ/ykVSMTvB9Iolj083mtGm/QOu316JKgZMbH82e9p6FbXil44i1UGc8H2j9RVri4U0m2sEps4MnHbuBRhejzh6fO4k7pbAKTn35sH7TEgfacCIzBOI8t3crPB1AaK8fmMGEiZo07WalWT/MS0=
+    secure: Ff1xs9XtVXz/S9LEqLvyiSx9oZdDcJiKPl4AFvlNuE6hk2Baekxkyg32jokWZunSePDl09FYpST0f2pK3Zbs1K9LfA0wZGuMESnLWcg+Db8m7R0dDaNXPf4p8eXyqDjxnuRlTGXCWxdkUKn0/Pf5+zaH/OIxKlWtFdy2CrBF7n7sDRlSvubrLSP5SaLqsiIcdw/V7BFDAw8f4eqq6qsCrxwKwq68jgdgxCiXZ48au7n0nDuyEQ+VDolhd/TdMklVHs1sHe1QxDet7hFVGLEAEcQndUw6h+SzPK1DQMKQ+rDvplZPhyaqhR5G6lKksUQYf1MP0cXgBvoGuP3ejoC999bhEZmb3i7PZS2n1b2BOnOrqDbexgFYLqpDmlpGP+Tl/KRo7GMSAKlSbcxX1FQlDEOOcHIp6GZZx6HKnTxT/GGcREHWF03zbRWmJnPXciO2GCWFqFWcsuCpF8AEQHkhLsvvrvBAsoK+E7VPu0Bi+w7gM52OWio9oHY4ily1rzdeY4cB20uc4POgwCV+rXL7W0+dwVYBelh3zLjmm6HRJJDRL8E2Zr5GtcLT7CJrslzI/qNhGYkXOkQ6A3FQTlmXtI8vAW/V4TaJsQIWpwhCUdumuuSlE5i8ZjXb1dKpESM+CMJPgysKmAWxU8MSkvGDjhmsYcL6sRd62V2nCjs0chU=
