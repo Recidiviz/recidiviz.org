@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Clemencharts</title>
+        <link rel="icon" href="favicon.png" type="image/x-icon" />
+
+        <script src='chart.min.js'></script>
+        <script src='chart.stackedBar.js'></script>
+
+        <link href="bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Roboto|Arvo:700" rel="stylesheet" type="text/css" />
+
+        <style>
+            .canvas-holder {
+                width:600px;
+                height:450px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 100px;
+            }
+            .big-canvas-holder {
+                width:1200px;
+                height:900px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 100px;
+            }
+            .graph-legend li span {
+                display: block;
+                width: 14px;
+                height: 14px;
+                border-radius: 7px;
+                float: left;
+                margin-top: 4px;
+                margin-right: 8px;
+            }
+            .graph-legend {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                margin-top : 10px;
+            }
+            .graph-legend li {
+                margin-bottom : 10px;
+                width:200px;
+                display: inline-block;
+                zoom:1;
+                *display:inline; /* this fix is needed for IE7- */
+            }
+            .graph-legend-long li {
+                margin-bottom : 10px;
+                width:300px;
+                display: inline-block;
+                zoom:1;
+                *display:inline; /* this fix is needed for IE7- */
+            }
+            .graph-legend li:first-letter {
+                text-transform: capitalize;
+            }
+            .comm-how {
+                display: inline-block;
+                float : left;
+                color : #979797;
+                width : 25px;
+                text-align: right;
+                margin-right : 10px;
+            }
+            .graph-title {
+                font-family: "Roboto",sans-serif;
+                color:#4E443C;
+                font-variant: small-caps;
+                font-size: 30px;
+                text-transform: none;
+                font-weight: 100;
+                margin-bottom: 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .graph-description {
+                font-family: "Roboto",sans-serif;
+                color:#4E443C;
+                font-size: 14px;
+                text-transform: none;
+                font-weight: 100;
+                margin-bottom: 0;
+                margin-top: 15px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .legend-text {
+                font-family: "Roboto",sans-serif;
+                color:#4E443C;
+                font-variant: small-caps;
+                font-size: 14px;
+            }
+            .title {
+                font-family: "Roboto",sans-serif;
+                font-weight:bold;
+                color:#4E443C;
+                font-size: 62px;
+                text-transform: none;
+                font-weight: 100;
+                margin-bottom: 0;
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            .title-front {
+                color:#FF5959;
+            }
+            .title-back {
+                color:#6EC5E9;
+            }
+            .subtitle {
+                font-family:"Roboto",sans-serif;
+                color:#003A6F;
+                font-size: 23px;
+                /*font-style: italic;*/
+                text-transform: none;
+                font-weight: 100;
+                margin-bottom: 0;
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            .love {
+                color:#C70000;
+            }
+            .with-padding-below {
+                margin-bottom: 20px;
+            }
+            .with-big-padding-below {
+                margin-bottom: 200px;
+            }
+            .with-height {
+                height: 100px;
+            }
+            html {
+                position: relative;
+                min-height: 100%;
+            }
+            body {
+                /* Margin bottom by footer height */
+                margin-bottom: 60px;
+            }
+            .footer {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                /* Set the fixed height of the footer here */
+                height: 60px;
+
+                font-family:"Roboto",sans-serif;
+                color:#FF5959;
+                font-size: 18px;
+                text-transform: none;
+                font-weight:bold;
+                margin-bottom: 0;
+                margin-top: 10px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            .container {
+                width: auto;
+                max-width: 680px;
+                padding: 0 15px;
+            }
+            .container .text-muted {
+                margin: 20px 0;
+            }
+        </style>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-64455054-1', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body>
+        <div id="title" class="title">Recidiviz</div>
+
+        <div class="row with-padding-below">
+            <div class="col-md-12">
+                <div id="allCohortsCanvas" class="big-canvas-holder">
+                    <div id="allCohortsTitle" class="graph-title">Recidivism Rate Over Time</div>
+                    <div id="allCohortsLegend"></div>
+                    <canvas id="allCohorts" width="2400" height="1600"></canvas>
+                    <div id="allCohortsTraits" class="graph-description row">
+                        <div id="allCohortsReleaseCohort" class="graph-description col-md-3">Release Cohort: 1970-2014</div>
+                        <div id="allCohortsFollowUp" class="graph-description with-padding-below col-md-3">Follow Up Period: 5 Years</div>
+                        <div id="allCohortsMethodology" class="graph-description with-padding-below col-md-3">Methodology: Event-based, Offender-based</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row with-padding-below">
+            <div class="col-md-6">
+                <div id="perRaceOffenderCanvas" class="canvas-holder">
+                    <div id="perRaceOffenderTitle" class="graph-title">Recidivism Rate - By Race</div>
+                    <div id="perRaceOffenderLegend"></div>
+                    <canvas id="perRaceOffender" width="2400" height="1600"></canvas>
+                    <div id="perRaceOffenderTraits" class="graph-description row">
+                        <div id="perRaceOffenderReleaseCohort" class="graph-description col-md-3">Release Cohort: 2008</div>
+                        <div id="perRaceOffenderFollowUp" class="graph-description col-md-3">Follow Up Period: 1-10 Years</div>
+                        <div id="perRaceOffenderMethodology" class="graph-description col-md-3">Methodology: Offender-based</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div id="perAgeOffenderCanvas" class="canvas-holder">
+                    <div id="perAgeOffenderTitle" class="graph-title">Recidivism Rate - By Age</div>
+                    <div id="perAgeOffenderLegend"></div>
+                    <canvas id="perAgeOffender" width="2400" height="1600"></canvas>
+                    <div id="perAgeOffenderTraits" class="graph-description row">
+                        <div id="perAgeOffenderReleaseCohort" class="graph-description col-md-3">Release Cohort: 2008</div>
+                        <div id="perAgeOffenderFollowUp" class="graph-description with-padding-below col-md-3">Follow Up Period: 1-10 Years</div>
+                        <div id="perAgeOffenderMethodology" class="graph-description with-padding-below col-md-3">Methodology: Offender-based</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row with-padding-below">
+            <div class="col-md-6">
+                <div id="perSexOffenderCanvas" class="canvas-holder">
+                    <div id="perSexOffenderTitle" class="graph-title">Recidivism Rate - By Sex</div>
+                    <div id="perSexOffenderLegend"></div>
+                    <canvas id="perSexOffender" width="2400" height="1600"></canvas>
+                    <div id="perSexOffenderTraits" class="graph-description row">
+                        <div id="perSexOffenderReleaseCohort" class="graph-description col-md-3">Release Cohort: 2008</div>
+                        <div id="perSexOffenderFollowUp" class="graph-description with-padding-below col-md-3">Follow Up Period: 1-10 Years</div>
+                        <div id="perSexOffenderMethodology" class="graph-description with-padding-below col-md-3">Methodology: Offender-based</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row with-big-padding-below">
+            <div class="col-md-12">
+                <div id="perPrisonCanvas" class="big-canvas-holder">
+                    <div id="perPrisonTitle" class="graph-title">Recidivism Rate - By Facility</div>
+                    <div id="perPrisonTraits" class="graph-description row with-padding-below">
+                        <div id="perPrisonReleaseCohort" class="graph-description col-md-3">Release Cohort: 2008</div>
+                        <div id="perPrisonFollowUp" class="graph-description with-padding-below col-md-3">Follow Up Period: 10 Years</div>
+                        <div id="perRaceOffenderMethodology" class="graph-description with-padding-below col-md-3">Methodology: Event-based</div>
+                    </div>
+                    <div id="perPrisonLegend"></div>
+                    <canvas id="perPrison" width="2400" height="1600"></canvas>
+                    <div id="perPrison" class="graph-description">
+                        Lorem ipsum
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+
+            </div>
+        </footer>
+    </body>
+</html>
+
+<script>
+            Chart.defaults.global.scaleFontFamily = "'Roboto',sans-serif";
+            Chart.defaults.global.scaleFontSize = 11;
+
+            // all cohorts chart
+            var allCohortsData = {
+                labels: [1970,
+                        1971,
+                        1972,
+                        1973,
+                        1974,
+                        1975,
+                        1976,
+                        1977,
+                        1978,
+                        1979,
+                        1980,
+                        1981,
+                        1982,
+                        1983,
+                        1984,
+                        1985,
+                        1986,
+                        1987,
+                        1988,
+                        1989,
+                        1990,
+                        1991,
+                        1992,
+                        1993,
+                        1994,
+                        1995,
+                        1996,
+                        1997,
+                        1998,
+                        1999,
+                        2000,
+                        2001,
+                        2002,
+                        2003,
+                        2004,
+                        2005,
+                        2006,
+                        2007,
+                        2008,
+                        2009,
+                        2010,
+                        2011,
+                        2012,
+                        2013,
+                        2014],
+                datasets: [
+                  {
+                      label: "Event-based",
+                      fillColor : "rgba(77, 101, 141, 0.4)",
+                      strokeColor : "#152D54",
+                      pointColor : "#152D54",
+                      pointStrokeColor : "#fff",
+                      data: [0.02857142857,
+                            0.1538461538,
+                            0.0390625,
+                            0.0900140647,
+                            0.1151468315,
+                            0.1934696369,
+                            0.2512335526,
+                            0.344298857,
+                            0.4258976318,
+                            0.5272237197,
+                            0.4929752066,
+                            0.381211857,
+                            0.3785714286,
+                            0.3745669746,
+                            0.3477469276,
+                            0.3512408482,
+                            0.3730870712,
+                            0.3966134033,
+                            0.4131888402,
+                            0.4313058273,
+                            0.4734312417,
+                            0.4591391733,
+                            0.426982316,
+                            0.4329555362,
+                            0.4079963235,
+                            0.380610082,
+                            0.367804428,
+                            0.3652272086,
+                            0.3515891914,
+                            0.3313729467,
+                            0.3139354012,
+                            0.3163447783,
+                            0.3164390014,
+                            0.3247017479,
+                            0.3078562433,
+                            0.3075992743,
+                            0.3120242046,
+                            0.3188962315,
+                            0.3225338904,
+                            0.3304347826,
+                            0.3210382514,
+                            0.2722988604,
+                            0.2355605889,
+                            0.2043727503,
+                            0.1876636602]
+                  },
+                  {
+                      label: "Offender-based",
+                      fillColor : "rgba(212, 174, 106, 0.4)",
+                      strokeColor : "#805915",
+                      pointColor : "#805915",
+                      pointStrokeColor : "#fff",
+                      data: [0.02857142857,
+                            0.1153846154,
+                            0.02734375,
+                            0.07946554149,
+                            0.1051004637,
+                            0.1737870003,
+                            0.2208059211,
+                            0.3089396896,
+                            0.3833078686,
+                            0.4595687332,
+                            0.4124655647,
+                            0.3145887823,
+                            0.3109073359,
+                            0.3014337952,
+                            0.2846684873,
+                            0.2820829768,
+                            0.3008575198,
+                            0.314393036,
+                            0.3276458381,
+                            0.342886006,
+                            0.3780596351,
+                            0.3710656049,
+                            0.351619446,
+                            0.3610723627,
+                            0.3467984069,
+                            0.3223666022,
+                            0.309301968,
+                            0.3063944554,
+                            0.2988922249,
+                            0.2800817954,
+                            0.2677890627,
+                            0.2727557225,
+                            0.2696341655,
+                            0.2762723882,
+                            0.2539959314,
+                            0.2543841967,
+                            0.2621836164,
+                            0.263246413,
+                            0.265751556,
+                            0.2691380625,
+                            0.2599878567,
+                            0.2198183532,
+                            0.1839963194,
+                            0.160234191,
+                            0.154640675]
+                  }
+                ]
+            };
+
+            var allCohorts = document.getElementById('allCohorts').getContext('2d');
+            var allCohortsChart = new Chart(allCohorts).Line(allCohortsData, {
+                responsive : true,
+                legendTemplate : "<ul class=\"graph-legend\"><% for (var i=0; i<datasets.length; i++){%><li><div class=\"comm-how\"></div><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><div class=\"legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></div></li><%}%></ul>"
+            });
+
+            var legendHolder = document.getElementById('allCohortsLegend')
+                legendHolder.innerHTML = allCohortsChart.generateLegend();
+                document.getElementById('allCohortsLegend').innerHTML = allCohortsChart.generateLegend();
+
+            // per race event-based chart
+            var perRaceEventData = {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                datasets: [
+                  {
+                      label: "Black",
+                      fillColor : "rgba(217,145,237,0.4)",
+                      strokeColor : "#BA00ED",
+                      pointColor : "#9900C2",
+                      pointStrokeColor : "#fff",
+                      data: [0.05618531296, 0.1624774109, 0.2429768359, 0.301626417, 0.3500903565, 0.3849186792, 0.414325612, 0.4368325941, 0.4581895844, 0.4670609496]
+                  },
+                  {
+                      label: "White",
+                      fillColor : "rgba(237,171,145,0.4)",
+                      strokeColor : "#ED4300",
+                      pointColor : "#C23800",
+                      pointStrokeColor : "#fff",
+                      data: [0.0630407911, 0.1573959621, 0.217552534, 0.2748248867, 0.3222084878, 0.3609394314, 0.39184178, 0.4173877215, 0.4367531932, 0.4454058508]
+                  },
+                  {
+                      label: "Hispanic",
+                      fillColor: "rgba(145,211,237,0.4)",
+                      strokeColor: "rgba(145,211,237,1)",
+                      pointColor: "rgba(145,211,237,1)",
+                      pointStrokeColor: "#fff",
+                      data: [0.03876438522, 0.1344639612, 0.1968503937, 0.2416717141, 0.2731677771, 0.3058752271, 0.3288915809, 0.3525136281, 0.3725015142, 0.3809812235]
+                  }
+                ]
+            };
+
+            // var perRaceEvent = document.getElementById('perRaceEvent').getContext('2d');
+            // var perRaceEventChart = new Chart(perRaceEvent).Line(perRaceEventData, {
+            //     responsive : true,
+            //     legendTemplate : "<ul class=\"graph-legend\"><% for (var i=0; i<datasets.length; i++){%><li><div class=\"comm-how\"></div><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><div class=\"legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></div></li><%}%></ul>"
+            // });
+            //
+            // var legendHolder = document.getElementById('perRaceEventLegend')
+            //     legendHolder.innerHTML = perRaceEventChart.generateLegend();
+            //     document.getElementById('perRaceEventLegend').innerHTML = perRaceEventChart.generateLegend();
+
+            // per race offender-based chart
+            var perRaceOffenderData = {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                datasets: [
+                  {
+                      label: "Black",
+                      fillColor : "rgba(90, 172, 86, 0.4)",
+                      strokeColor : "#156711",
+                      pointColor : "#156711",
+                      pointStrokeColor : "#fff",
+                      data: [0.05577460161, 0.1595202891, 0.2301626417, 0.271671869, 0.2932205246, 0.3009966595, 0.3055978314, 0.3092299984, 0.3116062647, 0.3129831335]
+                  },
+                  {
+                      label: "White",
+                      fillColor : "rgba(101, 17, 66, 0.4)",
+                      strokeColor : "#651142",
+                      pointColor : "#651142",
+                      pointStrokeColor : "#fff",
+                      data: [0.0630407911, 0.1540997116, 0.2076637824, 0.2482488669, 0.2665155885, 0.2771597308, 0.2849837934, 0.28858247, 0.2909750034, 0.2917128142]
+                  },
+                  {
+                      label: "Hispanic",
+                      fillColor: "rgba(212, 212, 106, 0.4)",
+                      strokeColor: "#807F15",
+                      pointColor: "#807F15",
+                      pointStrokeColor: "#fff",
+                      data: [0.03846153846, 0.1332525742, 0.1865536039, 0.2098728044, 0.2146174036, 0.2268322229, 0.2308701797, 0.2360690491, 0.2381415304, 0.2393684636]
+                  }
+                ]
+            };
+
+            var perRaceOffender = document.getElementById('perRaceOffender').getContext('2d');
+            var perRaceOffenderChart = new Chart(perRaceOffender).Line(perRaceOffenderData, {
+                responsive : true,
+                legendTemplate : "<ul class=\"graph-legend\"><% for (var i=0; i<datasets.length; i++){%><li><div class=\"comm-how\"></div><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><div class=\"legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></div></li><%}%></ul>"
+            });
+
+            var legendHolder = document.getElementById('perRaceOffenderLegend')
+                legendHolder.innerHTML = perRaceOffenderChart.generateLegend();
+                document.getElementById('perRaceOffenderLegend').innerHTML = perRaceOffenderChart.generateLegend();
+
+            // per age offender-based chart
+            var perAgeOffenderData = {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                datasets: [
+                  {
+                      label: "24 and younger",
+                      fillColor : "rgba(212, 133, 106, 0.4)",
+                      strokeColor : "#803015",
+                      pointColor : "#803015",
+                      pointStrokeColor : "#fff",
+                      data: [0.06030647553, 0.1762234305, 0.2419673752, 0.2810182897, 0.3131800956, 0.3313362992, 0.3448533531, 0.3486999506, 0.3539713297, 0.3550551985]
+                  },
+                  {
+                      label: "25 - 29",
+                      fillColor : "rgba(212, 166, 106, 0.4)",
+                      strokeColor : "#805115",
+                      pointColor : "#805115",
+                      pointStrokeColor : "#fff",
+                      data: [0.04945316215, 0.1445553971, 0.2099381835, 0.2559835156, 0.2711998732, 0.2868124901, 0.289744809, 0.2983975273, 0.3086099223, 0.3164447615]
+                  },
+                  {
+                      label: "30 - 34",
+                      fillColor: "rgba(72, 111, 136, 0.4)",
+                      strokeColor: "#123752",
+                      pointColor: "#123752",
+                      pointStrokeColor: "#fff",
+                      data: [0.05195599022, 0.1433374083, 0.20599022, 0.2393031785, 0.2530562347, 0.2618174409, 0.2789486553, 0.2888467808, 0.2955867971, 0.3029380603]
+                  },
+                  {
+                      label: "35 - 39",
+                      fillColor: "rgba(74, 148, 112, 0.4)",
+                      strokeColor: "#0F5935",
+                      pointColor: "#0F5935",
+                      pointStrokeColor: "#fff",
+                      data: [0.04810209424, 0.152486911, 0.2120418848, 0.245091623, 0.2578534031, 0.2632722513, 0.2645069808, 0.2664703316, 0.2685078534, 0.2736191099]
+                  },
+                  {
+                      label: "40 and older",
+                      fillColor: "rgba(130, 71, 140, 0.4)",
+                      strokeColor: "#4A1054",
+                      pointColor: "#4A1054",
+                      pointStrokeColor: "#fff",
+                      data: [0.05070364238, 0.1187913907, 0.1723923841, 0.2012969095, 0.2119205298, 0.2203366446, 0.2286125828, 0.2313355408, 0.2340245585, 0.2372295806]
+                  }
+                ]
+            };
+
+            var perAgeOffender = document.getElementById('perAgeOffender').getContext('2d');
+            var perAgeOffenderChart = new Chart(perAgeOffender).Line(perAgeOffenderData, {
+                responsive : true,
+                legendTemplate : "<ul class=\"graph-legend\"><% for (var i=0; i<datasets.length; i++){%><li><div class=\"comm-how\"></div><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><div class=\"legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></div></li><%}%></ul>"
+            });
+
+            var legendHolder = document.getElementById('perAgeOffenderLegend')
+                legendHolder.innerHTML = perAgeOffenderChart.generateLegend();
+                document.getElementById('perAgeOffenderLegend').innerHTML = perAgeOffenderChart.generateLegend();
+
+            // per sex offender-based chart
+            var perSexOffenderData = {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                datasets: [
+                  {
+                      label: "Female",
+                      fillColor : "rgba(165, 198, 99, 0.4)",
+                      strokeColor : "#567714",
+                      pointColor : "#567714",
+                      pointStrokeColor : "#fff",
+                      data: [0.04480651731, 0.09368635438, 0.1303462322, 0.1558044807, 0.1883910387, 0.1911065852, 0.1975560081, 0.2172437203, 0.2275831636, 0.236042091]
+                  },
+                  {
+                      label: "Male",
+                      fillColor : "rgba(212, 106, 106, 0.4)",
+                      strokeColor : "#801515",
+                      pointColor : "#801515",
+                      pointStrokeColor : "#fff",
+                      data: [0.0540131696, 0.1535415554, 0.2165865812, 0.2537076585, 0.2691315181, 0.2873328588, 0.2996909296, 0.3074959957, 0.315012873, 0.3194396986]
+                  }
+                ]
+            };
+
+            var perSexOffender = document.getElementById('perSexOffender').getContext('2d');
+            var perSexOffenderChart = new Chart(perSexOffender).Line(perSexOffenderData, {
+                responsive : true,
+                legendTemplate : "<ul class=\"graph-legend\"><% for (var i=0; i<datasets.length; i++){%><li><div class=\"comm-how\"></div><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><div class=\"legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></div></li><%}%></ul>"
+            });
+
+            var legendHolder = document.getElementById('perSexOffenderLegend')
+                legendHolder.innerHTML = perSexOffenderChart.generateLegend();
+                document.getElementById('perSexOffenderLegend').innerHTML = perSexOffenderChart.generateLegend();
+
+            // per prison chart
+            var perPrisonData = {
+                labels: ['OTISVILLE',
+                        'MID-ORANGE',
+                        'WOODBOURNE',
+                        'WALLKILL',
+                        'TACONIC',
+                        'MOHAWK',
+                        'ARTHURKILL',
+                        'SULLIVAN',
+                        'WENDE',
+                        'BAYVIEW',
+                        'ALBION',
+                        'FISHKILL',
+                        'GOUVERNEUR',
+                        'GROVELAND',
+                        'CAPE VINCENT',
+                        'MIDSTATE',
+                        'GOWANDA',
+                        'OGDENSBURG',
+                        'GREEN HAVEN',
+                        'RIVERVIEW',
+                        'ATTICA',
+                        'ONEIDA',
+                        'ORLEANS',
+                        'WATERTOWN',
+                        'AUBURN',
+                        'MT. MCGREGOR',
+                        'CLINTON',
+                        'COXSACKIE',
+                        'COLLINS',
+                        'QUEENSBORO',
+                        '*****',
+                        'FRANKLIN',
+                        'SING SING',
+                        'WYOMING',
+                        'BUTLER',
+                        'CAYUGA',
+                        'BEDFORD HILLS',
+                        'BARE HILL',
+                        'ELMIRA',
+                        'FIVE POINTS',
+                        'LIVINGSTON',
+                        'CHATEAUGAY ASACTC',
+                        'MARCY',
+                        'GREAT MEADOW',
+                        'GREENE',
+                        'WASHINGTON',
+                        'ALTONA',
+                        'ADIRONDACK',
+                        'EDGECOMBE',
+                        'UPSTATE',
+                        'DOWNSTATE',
+                        'HUDSON',
+                        'ULSTER',
+                        'WILLARD',
+                        'SOUTHPORT',
+                        'LINCOLN',
+                        'LAKEVIEW',
+                        'MORIAH'],
+                datasets: [
+                    {
+                        label: "Recidivism rate",
+                        fillColor: "rgba(66, 132, 125, 0.5)",
+                        strokeColor: "#0D4F48",
+                        highlightFill: "rgba(106, 158, 152 ,0.75)",
+                        highlightStroke: "rgba(13, 79, 72, 1)",
+                        data: [0.1098901099,
+                              0.1212121212,
+                              0.1315789474,
+                              0.2429906542,
+                              0.265625,
+                              0.2823129252,
+                              0.2827225131,
+                              0.3066666667,
+                              0.3098591549,
+                              0.3166666667,
+                              0.3191489362,
+                              0.3244147157,
+                              0.3364485981,
+                              0.3481781377,
+                              0.3488372093,
+                              0.3532934132,
+                              0.3533568905,
+                              0.3644859813,
+                              0.3698630137,
+                              0.3764044944,
+                              0.3783783784,
+                              0.3868852459,
+                              0.3911111111,
+                              0.3928571429,
+                              0.4012345679,
+                              0.4044117647,
+                              0.4075829384,
+                              0.4105263158,
+                              0.4254143646,
+                              0.4287548139,
+                              0.4349049365,
+                              0.4444444444,
+                              0.4454022989,
+                              0.445482866,
+                              0.4492753623,
+                              0.4518072289,
+                              0.4526315789,
+                              0.4554794521,
+                              0.4590163934,
+                              0.461038961,
+                              0.4689655172,
+                              0.4701986755,
+                              0.4702380952,
+                              0.4822695035,
+                              0.487394958,
+                              0.487804878,
+                              0.4909090909,
+                              0.5426356589,
+                              0.5508474576,
+                              0.5555555556,
+                              0.5582524272,
+                              0.5617977528,
+                              0.5849056604,
+                              0.5905707196,
+                              0.5961538462,
+                              0.606557377,
+                              0.7878787879,
+                              0.9423076923]
+                    }
+                ]
+            };
+
+            var perPrison = document.getElementById('perPrison').getContext('2d');
+            var perPrisonChart = new Chart(perPrison).StackedBar(perPrisonData, {
+                responsive : true,
+                legendTemplate : "<ul class=\"graph-legend\"><% for (var i=0; i<datasets.length; i++){%><li><div class=\"comm-how\"></div><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><div class=\"legend-text\"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></div></li><%}%></ul>"
+            });
+
+            // var legendHolder = document.getElementById('perPrisonLegend')
+            //     legendHolder.innerHTML = perPrisonChart.generateLegend();
+            //     document.getElementById('perPrisonLegend').innerHTML = perPrisonChart.generateLegend();
+
+        </script>
