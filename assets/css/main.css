@@ -2058,7 +2058,7 @@
 	}
 
 		.features section {
-			padding: 3.5em 3em 1em 7em ;
+			padding: 3.5em 3em 1em 8em ;
 			width: 50%;
 			border-top: solid 1px rgba(255, 255, 255, 0.15);
 			position: relative;
@@ -2547,15 +2547,16 @@
 		}
 
 		.icon.major {
-			width: 2.5em;
-			height: 2.5em;
+			width: 4em;
+			height: 4em;
 			display: block;
 			background: #ffffff;
 			border-radius: 100%;
 			color: #312450;
 			text-align: center;
 			line-height: 2.5em;
-			margin: 0 0 1.3em 0;
+			margin: 0 1.3em 1.3em 0;
+			border: 0.25em solid white;
 		}
 
 			.icon.major:before {
@@ -3917,3 +3918,7 @@
 			}
 
 		}
+
+		/*.features section h3, .features section p {
+			padding-left: 1.5em;
+		}*/
