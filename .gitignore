@@ -3,6 +3,7 @@
 
 # Production build directory
 build/
+.firebase/
 
 # Dependency directory
 node_modules/
