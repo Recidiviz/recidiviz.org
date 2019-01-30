@@ -2559,6 +2559,31 @@
 			border: 0.25em solid white;
 		}
 
+/* Desktop behavior */
+		.icon.major.stack:nth-child(1) {
+			margin-top: -0.5em;
+			float:left;
+		}
+
+		.icon.major.stack:nth-child(2) {
+			margin-top: 3.9em;
+			clear: right;
+		}
+
+/* Mobile behavior */
+    @media screen and (max-width: 480px) {
+		.icon.major.stack:nth-child(1) {
+			margin-top: 0em;
+			margin-right: 1em;
+			float:left;
+		}
+
+		.icon.major.stack:nth-child(2) {
+			margin-top: 0em;
+			float: left;
+		}
+	}
+
 			.icon.major:before {
 				font-size: 1.25em;
 			}
@@ -3919,6 +3944,7 @@
 
 		}
 
-		/*.features section h3, .features section p {
-			padding-left: 1.5em;
-		}*/
+		p.description {
+			font-size: 0.9em;
+			line-height: 1.5em;
+		}
