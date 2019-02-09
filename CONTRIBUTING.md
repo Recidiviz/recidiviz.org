@@ -4,7 +4,8 @@ Welcome and thank you for contributing to Recidiviz! We believe that our mission
 is critical to the long-term health of society. All contributions help to
 realize the goal of a more effective criminal justice system.
 
-_From little things big things grow_. No contribution is minor.
+_["From small things ... big things one day come."](https://www.youtube.com/watch?v=4cReBk3wXPU) - Bruce Springsteen_  
+No contribution is minor.
 
 The following are some brief guidelines to help make your experience smooth and
 impactful, and to keep Recidiviz effective as we grow.
@@ -34,9 +35,8 @@ miss out on your help.
 ### Reporting Bugs
 
 Send any bugs you find our way by filing an issue against one of our
-repositories. Don't overthink picking the repository: if it's related to data
+repositories. Don't overthink picking the repository: if it's related to our website, submit it [here](https://github.com/Recidiviz/recidiviz.com/issues). If it's related to data
 ingest or calculation, submit it [there](https://github.com/Recidiviz/recidiviz-data/issues).
-If it's related to our website, submit it [here](https://github.com/Recidiviz/recidiviz.com/issues).
 
 Please provide as much information as you can to help us reproduce and fix the
 bug. This may include, but is not limited to:
@@ -46,8 +46,7 @@ bug. This may include, but is not limited to:
 * A description of what you expected to occur and how it differed from reality
 * A description of any relevant data that was present and//or used (_sans PII of
 any kind_)
-* Environment information, such as your OS and browser, or versions of
-Python, Google Cloud SDK, or any relevant libraries
+* Environment information, such as your OS and browser, or versions of relevant libraries
 
 ### Submitting Feature Requests
 
@@ -62,7 +61,6 @@ feature. This may include, but is not limited to:
 provide
 * If a change in existing functionality, why you believe this is advantageous to
 the current functionality
-* A description of what data might be required to power the feature
 
 ### Questions, Comments, Concerns
 
@@ -90,9 +88,7 @@ where you feel less comfortable or need to learn something new.
 
 **tl;dr:**
 1. Work on a feature branch
-1. [Run linting and tests often](README.md#linting--running-tests)
-1. Ensure your change has test coverage (_ideally complete coverage_)
-1. Submit a descriptive pull request
+2. Submit a descriptive pull request
 
 Once you have selected an issue and assigned it to yourself, you will start
 writing the code on an appropriately named branch on your local machine. If you
@@ -100,22 +96,13 @@ are part of the Recidiviz Team, you may push branches directly to the
 `recidiviz/recidiviz.com` remote. Otherwise, you may push branches to a [fork](https://help.github.com/articles/fork-a-repo/)
 of the repository.
 
-Before issuing a pull request, run our linting and test suite over your changes
-to ensure no regression, as described in [our Readme](README.md#linting--running-tests).
+Before issuing a pull request, test your changes locally at various screen size breaks.
 
-These same commands will be run by our continuous integration (CI) suite and
-your pull request will be "built against" automatically to show whether it
-passes. Stay ahead of the curve by running these throughout the development
-process to help you avoid any surprises.
-
-Related, include unit and//or integration tests to cover any new code. Update or
-remove existing test cases where appropriate.
-
-When you are passing linting and testing locally and are satisfied with the
+When you are satisfied with the
 current state of your work, submit a pull request against `master`. However,
 you can also submit Work In Progress ("WIP") pull requests to gather early
 feedback if you believe it would be helpful. If you do so, please format the
-title as "WIP: My title here."
+title as "WIP: <My title here>."
 
 Make sure the pull request description explicitly lists everything that the work
 does, and references any issues it contributes to.
@@ -130,25 +117,9 @@ If your pull request does two separate things, it should likely (but not
 necessarily) be multiple pull requests. We prefer for pull requests to be
 focused on one feature, issue, etc.
 
-We will not merge any pull requests that do not pass our CI suite, particularly
-those that do not pass linting, that do not pass all tests, or that avoidably
-lower our test coverage. (As noted above, our CI suite is run automatically for
-each new commit to each new pull request and will output the results on the pull
-request itself.) We will explicitly grant exceptions to this rule where
-appropriate. Modifying lint rules will not be granted without a well-reasoned
-justification.
-
 Once the above conditions are met, someone from the Recidiviz Team will merge
 your pull request (and delete the branch if issued against our remote).
 
 ## Style
 
-Follow the Airbnb Style Guides for [Javascript](https://github.com/airbnb/javascript)
-and [React](https://github.com/airbnb/javascript/tree/master/react).
-
-The linting configuration should adhere to this style guide and help you follow
-it automatically. You can use support for warning suppression if you find it
-necessary, but this may be argued against during code review.
-
-You should also ensure you follow the outlined [application structure](README.md#application-structure),
-though exceptions may be made here as well, as long as they are made explicit.
+Follow the style pattern for the Hyperspace by HTML5 UP library in `main.css`, and standard HTML indentation. Please add comments when you create a new section and leave a space between the next and previous sections.
