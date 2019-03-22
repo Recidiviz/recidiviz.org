@@ -2823,6 +2823,12 @@
 			border: 0.25em solid white;
 		}
 
+		.icon.major.headshot {
+			width: 4.5em;
+			height: 4.5em;
+			top: 3.5em;
+		}
+
 /* Desktop behavior */
 		.icon.major.stack:nth-child(1) {
 			margin-top: -0.5em;
