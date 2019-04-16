@@ -2044,37 +2044,35 @@
 					opacity: 0.1;
 				}
 
-/* Features */
+    /* Features / Featurettes - shared */
 
-	.features {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		border-radius: 0.25em;
-		border: solid 1px rgba(255, 255, 255, 0.15);
-		background: rgba(255, 255, 255, 0.05);
-		margin: 0 0 2em 0;
-	}
+    .features, .featurettes {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        border: solid 1px rgba(255, 255, 255, 0.15);
+        border-width: 1px 0 0 1px;
+        margin: 0 0 2em 0;
+    }
 
+    .features section, .featurettes section {
+        border: solid 1px rgba(255, 255, 255, 0.15);
+        border-width: 0 1px 1px 0;
+        width: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        position: relative;
+    }
+
+
+    /* Features */
 		.features section {
 			padding: 3.5em 3em 1em 8em ;
-			width: 50%;
-			border-top: solid 1px rgba(255, 255, 255, 0.15);
-			position: relative;
 		}
-
-			.features section:nth-child(-n + 2) {
-				border-top-width: 0;
-			}
-
-			.features section:nth-child(2n) {
-				border-left: solid 1px rgba(255, 255, 255, 0.15);
-			}
 
 			.features section .icon {
 				-moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease;
@@ -2250,14 +2248,8 @@
 			}
 
 				.features section {
-					border-top-width: 1px !important;
-					border-left-width: 0 !important;
 					width: 100%;
 				}
-
-					.features section:first-child {
-						border-top-width: 0 !important;
-					}
 
 		}
 
@@ -2289,27 +2281,8 @@
 		}
 
 /* Featurettes */
-
-	.featurettes {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		border-radius: 0.25em;
-		border: solid 1px rgba(255, 255, 255, 0.15);
-		background: rgba(255, 255, 255, 0.05);
-		margin: 0 0 2em 0;
-	}
-
 		.featurettes section {
 			padding: 1em 3em 1em 6em ;
-			width: 50%;
-			border-top: solid 1px rgba(255, 255, 255, 0.15);
-			position: relative;
 		}
 			.featurettes section p, h3 {
 				margin-bottom: 0.5em;
@@ -2322,14 +2295,7 @@
 
 			.featurettes section p {
 				font-size:0.8em;
-			}
-
-			.featurettes section:nth-child(-n + 2) {
-				border-top-width: 0;
-			}
-
-			.featurettes section:nth-child(2n) {
-				border-left: solid 1px rgba(255, 255, 255, 0.15);
+				min-height: 1.875em;
 			}
 
 			.featurettes section .icon {
@@ -2507,14 +2473,8 @@
 			}
 
 				.featurettes section {
-					border-top-width: 1px !important;
-					border-left-width: 0 !important;
 					width: 100%;
 				}
-
-					.featurettes section:first-child {
-						border-top-width: 0 !important;
-					}
 
 		}
 
