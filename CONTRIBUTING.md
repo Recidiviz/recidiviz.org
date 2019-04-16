@@ -14,7 +14,7 @@ impactful, and to keep Recidiviz effective as we grow.
 The Recidiviz project and everyone participating in it are governed by the
 [Recidiviz Code of Conduct](CODE_OF_CONDUCT.md). By contributing, you agree to
 uphold this code and to treat others with dignity and respect. Please report
-unacceptable behavior to [core-team@recidiviz.com](mailto:core-team@recidiviz.com).
+unacceptable behavior to [core-team@recidiviz.org](mailto:core-team@recidiviz.org).
 This is a small group of project leads who will maintain confidentiality.
 
 ## Providing Feedback
@@ -36,7 +36,7 @@ miss out on your help.
 Send any bugs you find our way by filing an issue against one of our
 repositories. Don't overthink picking the repository: if it's related to data
 ingest or calculation, submit it [there](https://github.com/Recidiviz/recidiviz-data/issues).
-If it's related to our website, submit it [here](https://github.com/Recidiviz/recidiviz.com/issues).
+If it's related to our website, submit it [here](https://github.com/Recidiviz/recidiviz.org/issues).
 
 Please provide as much information as you can to help us reproduce and fix the
 bug. This may include, but is not limited to:
@@ -69,13 +69,13 @@ the current functionality
 Please do not submit issues to ask questions about the project or our
 organization, provide general comment, or express concerns. If you are in our
 Slack space, then feel free to reach out there. Otherwise, we'd love to hear
-from you at [team@recidiviz.com](mailto:team@recidiviz.com).
+from you at [team@recidiviz.org](mailto:team@recidiviz.org).
 
 ## Contributing Code
 
 ### Selecting an Issue
 
-Our backlog of tasks is labeled and open for browsing under the [project issues](https://github.com/Recidiviz/recidiviz.com/issues).
+Our backlog of tasks is labeled and open for browsing under the [project issues](https://github.com/Recidiviz/recidiviz.org/issues).
 All issues which are not currently assigned are open for contribution. Please
 assign an issue to yourself if you intend to submit a pull request soon. If you
 are interested but unsure about contributing to a particular issue, leave a
@@ -97,7 +97,7 @@ where you feel less comfortable or need to learn something new.
 Once you have selected an issue and assigned it to yourself, you will start
 writing the code on an appropriately named branch on your local machine. If you
 are part of the Recidiviz Team, you may push branches directly to the
-`recidiviz/recidiviz.com` remote. Otherwise, you may push branches to a [fork](https://help.github.com/articles/fork-a-repo/)
+`recidiviz/recidiviz.org` remote. Otherwise, you may push branches to a [fork](https://help.github.com/articles/fork-a-repo/)
 of the repository.
 
 Before issuing a pull request, run our linting and test suite over your changes
