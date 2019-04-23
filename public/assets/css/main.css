@@ -2071,7 +2071,7 @@
 
     /* Features */
 		.features section {
-			padding: 3.5em 3em 1em 8em ;
+			padding: 3.5em 3em 1em 9em ;
 		}
 
 			.features section .icon {
@@ -2256,28 +2256,42 @@
 		@media screen and (max-width: 736px) {
 
 			.features section {
-				padding: 2.5em 1.5em 0.1em 5.5em ;
+				padding: 2em 2.5em 0.9em 7.25em ;
 			}
 
 				.features section .icon {
 					left: 1.5em;
 					top: 2em;
+					bottom: 0.5em;
+					float: left;
 				}
-
 		}
 
 		@media screen and (max-width: 480px) {
-
 			.features section {
-				padding: 2em 1.5em 0.1em 1.5em ;
+				padding: 1em 0.1em 1em 1.5em ;
 			}
+
+                .features section p, h3 {
+                    margin-bottom: 0.5em;
+                    line-height: 1.2em;
+                }
+
+                .features section h3 {
+                    font-size:0.9em;
+                }
+
+                .features section p {
+                    font-size:0.8em;
+                    min-height: 2.5em;
+                }
 
 				.features section .icon {
 					left: 0;
 					position: relative;
 					top: 0;
+					float: left;
 				}
-
 		}
 
 /* Featurettes */
@@ -2295,7 +2309,7 @@
 
 			.featurettes section p {
 				font-size:0.8em;
-				min-height: 1.875em;
+				min-height: 2.5em;
 			}
 
 			.featurettes section .icon {
@@ -2481,12 +2495,12 @@
 		@media screen and (max-width: 736px) {
 
 			.featurettes section {
-				padding: 2em 2.5em 0.9em 5.5em ;
+				padding: 1em 2.5em 0.9em 5.5em ;
 			}
 
 				.featurettes section .icon {
 					left: 1em;
-					top: 1.25em;
+					top: 0.75em;
 					bottom: 0.5em;
 					float: left;
 				}
@@ -2786,6 +2800,13 @@
 		.icon.major.headshot {
 			width: 4.5em;
 			height: 4.5em;
+		}
+
+		@media screen and (max-width: 480px) {
+            .icon.major.headshot {
+                width: 4em;
+                height: 4em;
+            }
 		}
 
 /* Desktop behavior */
