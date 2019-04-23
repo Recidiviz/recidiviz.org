@@ -2044,37 +2044,35 @@
 					opacity: 0.1;
 				}
 
-/* Features */
+    /* Features / Featurettes - shared */
 
-	.features {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		border-radius: 0.25em;
-		border: solid 1px rgba(255, 255, 255, 0.15);
-		background: rgba(255, 255, 255, 0.05);
-		margin: 0 0 2em 0;
-	}
+    .features, .featurettes {
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: -ms-flex;
+        display: flex;
+        -moz-flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        border: solid 1px rgba(255, 255, 255, 0.15);
+        border-width: 1px 0 0 1px;
+        margin: 0 0 2em 0;
+    }
 
+    .features section, .featurettes section {
+        border: solid 1px rgba(255, 255, 255, 0.15);
+        border-width: 0 1px 1px 0;
+        width: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        position: relative;
+    }
+
+
+    /* Features */
 		.features section {
-			padding: 3.5em 3em 1em 8em ;
-			width: 50%;
-			border-top: solid 1px rgba(255, 255, 255, 0.15);
-			position: relative;
+			padding: 3.5em 3em 1em 9em ;
 		}
-
-			.features section:nth-child(-n + 2) {
-				border-top-width: 0;
-			}
-
-			.features section:nth-child(2n) {
-				border-left: solid 1px rgba(255, 255, 255, 0.15);
-			}
 
 			.features section .icon {
 				-moz-transition: opacity 0.5s ease, -moz-transform 0.5s ease;
@@ -2250,66 +2248,55 @@
 			}
 
 				.features section {
-					border-top-width: 1px !important;
-					border-left-width: 0 !important;
 					width: 100%;
 				}
-
-					.features section:first-child {
-						border-top-width: 0 !important;
-					}
 
 		}
 
 		@media screen and (max-width: 736px) {
 
 			.features section {
-				padding: 2.5em 1.5em 0.1em 5.5em ;
+				padding: 2em 2.5em 0.9em 7.25em ;
 			}
 
 				.features section .icon {
 					left: 1.5em;
 					top: 2em;
+					bottom: 0.5em;
+					float: left;
 				}
-
 		}
 
 		@media screen and (max-width: 480px) {
-
 			.features section {
-				padding: 2em 1.5em 0.1em 1.5em ;
+				padding: 1em 0.1em 1em 1.5em ;
 			}
+
+                .features section p, h3 {
+                    margin-bottom: 0.5em;
+                    line-height: 1.2em;
+                }
+
+                .features section h3 {
+                    font-size:0.9em;
+                }
+
+                .features section p {
+                    font-size:0.8em;
+                    min-height: 2.5em;
+                }
 
 				.features section .icon {
 					left: 0;
 					position: relative;
 					top: 0;
+					float: left;
 				}
-
 		}
 
 /* Featurettes */
-
-	.featurettes {
-		display: -moz-flex;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-moz-flex-wrap: wrap;
-		-webkit-flex-wrap: wrap;
-		-ms-flex-wrap: wrap;
-		flex-wrap: wrap;
-		border-radius: 0.25em;
-		border: solid 1px rgba(255, 255, 255, 0.15);
-		background: rgba(255, 255, 255, 0.05);
-		margin: 0 0 2em 0;
-	}
-
 		.featurettes section {
 			padding: 1em 3em 1em 6em ;
-			width: 50%;
-			border-top: solid 1px rgba(255, 255, 255, 0.15);
-			position: relative;
 		}
 			.featurettes section p, h3 {
 				margin-bottom: 0.5em;
@@ -2322,14 +2309,7 @@
 
 			.featurettes section p {
 				font-size:0.8em;
-			}
-
-			.featurettes section:nth-child(-n + 2) {
-				border-top-width: 0;
-			}
-
-			.featurettes section:nth-child(2n) {
-				border-left: solid 1px rgba(255, 255, 255, 0.15);
+				min-height: 2.5em;
 			}
 
 			.featurettes section .icon {
@@ -2507,26 +2487,20 @@
 			}
 
 				.featurettes section {
-					border-top-width: 1px !important;
-					border-left-width: 0 !important;
 					width: 100%;
 				}
-
-					.featurettes section:first-child {
-						border-top-width: 0 !important;
-					}
 
 		}
 
 		@media screen and (max-width: 736px) {
 
 			.featurettes section {
-				padding: 2em 2.5em 0.9em 5.5em ;
+				padding: 1em 2.5em 0.9em 5.5em ;
 			}
 
 				.featurettes section .icon {
 					left: 1em;
-					top: 1.25em;
+					top: 0.75em;
 					bottom: 0.5em;
 					float: left;
 				}
@@ -2826,6 +2800,13 @@
 		.icon.major.headshot {
 			width: 4.5em;
 			height: 4.5em;
+		}
+
+		@media screen and (max-width: 480px) {
+            .icon.major.headshot {
+                width: 4em;
+                height: 4em;
+            }
 		}
 
 /* Desktop behavior */
